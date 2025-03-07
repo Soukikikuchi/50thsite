@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>創立50周年記念サイト</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header styles */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .anniversary-logo {
+            max-width: 80%;
+            margin-bottom: 2rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* President's message section */
+        .president-section {
+            padding: 5rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+        }
+        
+        .president-photo {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .president-photo img {
+            max-width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .president-message {
+            flex: 2;
+            min-width: 300px;
+            padding: 0 2rem;
+        }
+        
+        /* History timeline section */
+        .history-section {
+            padding: 5rem 2rem;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        
+        .timeline {
+            max-width: 1200px;
+            margin: 3rem auto;
+            position: relative;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #3498db;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            text-align: left;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid #3498db;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -13px;
+        }
+        
+        .right::after {
+            left: -13px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Events section */
+        .events-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            background-color: #fff;
+        }
+        
+        .events-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 3rem;
+        }
+        
+        .event-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .event-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .event-info {
+            padding: 1.5rem;
+        }
+        
+        /* Products section */
+        .products-section {
+            padding: 5rem 2rem;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        
+        .products-carousel {
+            position: relative;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            overflow: hidden;
+        }
+        
+        .products-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .product-item {
+            min-width: 300px;
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        
+        .product-logo {
+            max-width: 200px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .carousel-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .carousel-button:hover {
+            background-color: #2980b9;
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 8px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #bbb;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dot.active {
+            background-color: #3498db;
+        }
+        
+        /* Video section */
+        .video-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            background-color: #fff;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        /* Common sections styles */
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: #3498db;
+            bottom: -10px;
+            left: 25%;
+        }
+        
+        .section-desc {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: #666;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with 50th Anniversary Logo -->
+    <header>
+        <div class="anniversary-logo">
+            <!-- Replace with actual logo -->
+            <svg width="500" height="200" viewBox="0 0 500 200">
+                <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#2c3e50;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <rect width="500" height="200" fill="none"/>
+                <text x="50%" y="40%" font-family="Arial, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="url(#grad1)">創立50周年</text>
+                <text x="50%" y="70%" font-family="Arial, sans-serif" font-size="30" text-anchor="middle" fill="#2c3e50">1975-2025</text>
+                <circle cx="250" cy="100" r="90" stroke="url(#grad1)" stroke-width="4" fill="none"/>
+            </svg>
+        </div>
+        <div class="scroll-down">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 13l5 5 5-5"></path>
+                <path d="M7 6l5 5 5-5"></path>
+            </svg>
+        </div>
+    </header>
+    
+    <!-- President's Message Section -->
+    <section class="president-section">
+        <div class="president-photo">
+            <!-- Replace with actual president's photo -->
+            <img src="/api/placeholder/400/500" alt="社長の写真">
+        </div>
+        <div class="president-message">
+            <h2>社長メッセージ</h2>
+            <p>弊社は2025年2月に創業50周年を迎えました。これもひとえに皆様のご支援とご愛顧の賜物と心より感謝申し上げます。</p>
+            <p>創業以来、技術革新と顧客満足を追求し続け、業界の発展に貢献してまいりました。これからも変わらぬ理念のもと、新たな価値創造に挑戦し続けてまいります。</p>
+            <p>今後とも変わらぬご支援、ご指導を賜りますようお願い申し上げます。</p>
+            <p class="signature">代表取締役社長 〇〇 〇〇</p>
+        </div>
+    </section>
+    <!-- Anniversary Video -->
+    <section class="video-section">
+        <h2>50周年記念動画</h2>
+        <p class="section-desc">創立50周年を記念して制作した特別映像をご覧ください。</p>
+        
+        <div class="video-container">
+            <!-- Replace with actual YouTube video embed code -->
+            <iframe src="/api/placeholder/800/450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+    
+    <!-- Company History Timeline -->
+    <section class="history-section">
+        <h2>50年のあゆみ</h2>
+        <p class="section-desc">創業から現在に至るまでの50年間、私たちは常に挑戦と革新を続けてまいりました。</p>
+        
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>1975年</h3>
+                    <p>会社設立。東京都渋谷区に本社を開設。</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>1985年</h3>
+                    <p>初の自社製品を開発。業界で高い評価を獲得。</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>1995年</h3>
+                    <p>海外進出を開始。アジア市場へ展開。</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2005年</h3>
+                    <p>新本社ビル完成。研究開発施設を拡充。</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2015年</h3>
+                    <p>次世代技術の開発に成功。特許取得。</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2025年</h3>
+                    <p>創立50周年を迎える。新たな挑戦へ。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 50th Anniversary Events -->
+    <section class="events-section">
+        <h2>50周年イベントの様子</h2>
+        <p class="section-desc">2025年1月から2月にかけて開催された記念イベントの様子をご紹介します。</p>
+        
+        <div class="events-gallery">
+            <div class="event-card">
+                <img src="/api/placeholder/400/300" alt="1月イベントの様子">
+                <div class="event-info">
+                    <h3>記念式典</h3>
+                    <p>2025年1月15日に開催された創立50周年記念式典。取引先様、関係者様多数ご参列いただきました。</p>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="/api/placeholder/400/300" alt="2月第1回イベントの様子">
+                <div class="event-info">
+                    <h3>技術展示会</h3>
+                    <p>2025年2月5日開催。弊社の50年の技術の歩みと最新技術を展示。多くのお客様にご来場いただきました。</p>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="/api/placeholder/400/300" alt="2月第2回イベントの様子">
+                <div class="event-info">
+                    <h3>感謝祭</h3>
+                    <p>2025年2月20日、日頃のご愛顧に感謝を込めて開催。社員とお客様との交流の場となりました。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Products Showcase -->
+    <section class="products-section">
+        <h2>製品紹介</h2>
+        <p class="section-desc">弊社の主力製品をご紹介します。</p>
+        
+        <div class="products-carousel">
+            <div class="products-container">
+                <div class="product-item">
+                    <div class="product-logo">
+                        <img src="/api/placeholder/200/100" alt="製品ロゴ1">
+                    </div>
+                    <h3>製品名1</h3>
+                    <p>最先端技術を駆使した当社の主力製品。高い信頼性と使いやすさで多くのお客様にご愛用いただいております。</p>
+                </div>
+                <div class="product-item">
+                    <div class="product-logo">
+                        <img src="/api/placeholder/200/100" alt="製品ロゴ2">
+                    </div>
+                    <h3>製品名2</h3>
+                    <p>業界最高水準の性能を誇る革新的なソリューション。複雑な課題を簡単に解決します。</p>
+                </div>
+                <div class="product-item">
+                    <div class="product-logo">
+                        <img src="/api/placeholder/200/100" alt="製品ロゴ3">
+                    </div>
+                    <h3>製品名3</h3>
+                    <p>環境に配慮した設計の次世代製品。持続可能な社会の実現に貢献します。</p>
+                </div>
+                <div class="product-item">
+                    <div class="product-logo">
+                        <img src="/api/placeholder/200/100" alt="製品ロゴ4">
+                    </div>
+                    <h3>製品名4</h3>
+                    <p>クラウド連携機能を搭載した最新モデル。いつでもどこでも最適なパフォーマンスを発揮します。</p>
+                </div>
+                <div class="product-item">
+                    <div class="product-logo">
+                        <img src="/api/placeholder/200/100" alt="製品ロゴ5">
+                    </div>
+                    <h3>製品名5</h3>
+                    <p>AIを活用した知的システム。データ分析から予測までをシームレスに行います。</p>
+                </div>
+            </div>
+            
+            <div class="carousel-nav">
+                <button class="carousel-button prev">&#8249;</button>
+                <button class="carousel-button next">&#8250;</button>
+            </div>
+            
+            <div class="carousel-dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+                <span class="dot" data-index="4"></span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 会社名. All Rights Reserved.</p>
+        <p>〒000-0000 東京都渋谷区〇〇町1-2-3</p>
+        <p>TEL: 03-1234-5678 FAX: 03-1234-5679</p>
+    </footer>
+
+    <script>
+        // Products carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.products-container');
+            const items = document.querySelectorAll('.product-item');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            const dots = document.querySelectorAll('.dot');
+            
+            let currentIndex = 0;
+            const itemWidth = items[0].offsetWidth;
+            
+            // Initialize
+            updateCarousel();
+            
+            // Previous button click
+            prevBtn.addEventListener('click', function() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+            
+            // Next button click
+            nextBtn.addEventListener('click', function() {
+                if (currentIndex < items.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+            
+            // Dot click
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    currentIndex = parseInt(this.getAttribute('data-index'));
+                    updateCarousel();
+                });
+            });
+            
+            // Update carousel position and active dot
+            function updateCarousel() {
+                container.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+                
+                // Update active dot
+                dots.forEach((dot, index) => {
+                    if (index === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+                
+                // Update button states
+                prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+                nextBtn.style.opacity = currentIndex === items.length - 1 ? '0.5' : '1';
+            }
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                // Recalculate item width
+                const newItemWidth = items[0].offsetWidth;
+                
+                // Update carousel position with new width
+                container.style.transform = `translateX(-${currentIndex * newItemWidth}px)`;
+            });
+        });
+        
+        // Smooth scroll for navigation
+        document.querySelector('.scroll-down').addEventListener('click', function() {
+            const presidentSection = document.querySelector('.president-section');
+            presidentSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
