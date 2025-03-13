@@ -197,18 +197,20 @@
             display: flex;
             transition: transform 0.5s ease;
             margin-bottom: 2rem;
+            width: 100%;
         }
         
         .product-item {
-            min-width: 300px;
-            width: 80%;
+            min-width: 100%;
+            width: 100%;
             padding: 2rem;
             text-align: left;
             flex-shrink: 0;
             background: white;
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 1rem;
+            margin: 0;
+            box-sizing: border-box;
         }
         
         .product-logo {
@@ -757,7 +759,6 @@
             const dots = document.querySelectorAll('.dot');
             
             let currentIndex = 0;
-            const itemWidth = items[0].offsetWidth;
             
             // Initialize
             updateCarousel();
@@ -788,7 +789,8 @@
             
             // Update carousel position and active dot
             function updateCarousel() {
-                container.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+                const slideWidth = container.clientWidth;
+                container.style.transform = `translateX(-${currentIndex * 100}%)`;
                 
                 // Update active dot
                 dots.forEach((dot, index) => {
@@ -805,13 +807,7 @@
             }
             
             // Handle window resize
-            window.addEventListener('resize', function() {
-                // Recalculate item width
-                const newItemWidth = items[0].offsetWidth;
-                
-                // Update carousel position with new width
-                container.style.transform = `translateX(-${currentIndex * newItemWidth}px)`;
-            });
+            window.addEventListener('resize', updateCarousel);
         });
         
         // Smooth scroll for navigation
