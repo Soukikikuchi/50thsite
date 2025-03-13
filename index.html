@@ -203,13 +203,74 @@
             min-width: 300px;
             width: 100%;
             padding: 2rem;
-            text-align: center;
+            text-align: left;
             flex-shrink: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 1rem;
         }
         
         .product-logo {
-            width: 40%;
+            width: 200px;
+            height: auto;
             margin: 0 auto 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .product-logo img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        
+        .product-item h3 {
+            font-size: 1.8rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .product-item .product-tagline {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .product-item .section-title {
+            font-size: 1.2rem;
+            color: #3498db;
+            margin: 1.5rem 0 1rem;
+            font-weight: bold;
+        }
+        
+        .product-item .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .product-item .feature-list li {
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .product-item .feature-list li::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .product-description {
+            margin: 1rem 0;
+            line-height: 1.8;
         }
         
         .carousel-nav {
@@ -542,12 +603,25 @@
                         <img src="./logo_tate_c.png" alt="製品ロゴ1">
                     </div>
                     <h3>クラファス</h3>
-                    <p>くらしファースト。クラファスを使って、便利なくらしを！</p>
-                    <p>☆クラファスについて</p>
-                    <p>クラファスは、住民の方と自治体をオンラインで結ぶ申請システムです。<br>
+                    <p class="product-tagline">くらしファースト。クラファスを使って、便利なくらしを！</p>
+                    
+                    <p class="section-title">☆クラファスについて</p>
+                    <p class="product-description">クラファスは、住民の方と自治体をオンラインで結ぶ申請システムです。<br>
                         簡単に導入が可能なクラウド型のサービスで、申請書の準備などサービスの設定が整えば、すぐにでもオンライン申請が可能になります。</p>
-                    <p>☆機能概要</p>
-                    <p></p>
+                    
+                    <p class="section-title">☆機能概要</p>
+                    <ul class="feature-list">
+                        <li><strong>申請書作成</strong><br>
+                            GUIを使って、住民の方が使用する申請書を作成することができます。</li>
+                        <li><strong>シナリオ作成</strong><br>
+                            住民の方が質問に答えることで、必要な書類を見つけやすくするシナリオ作成できます。</li>
+                        <li><strong>承認ワークフロー</strong><br>
+                            住民の方が申請した申請書の処理手続きをワークフローで設定がきます。</li>
+                        <li><strong>本人認証サービスとの連携</strong><br>
+                            公的個人認証サービス、ぴったりサービス、eKYC、gBizID認証サービスといった各種認証サービスとも連携が可能です。</li>
+                        <li><strong>本人認証サービスの他に様々なサービスとも連携</strong><br>
+                            キャッシュレス決済サービス、チャットボット、多言語翻訳サービスなど様々なサービスと連携が可能です。</li>
+                    </ul>
                 </div>
                 <div class="product-item">
                     <div class="product-logo">
