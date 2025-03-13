@@ -61,8 +61,7 @@
         }
         
         .president-photo img {
-            max-width: 80%;
-            width: 50%;
+            width: 80%;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
@@ -267,15 +266,15 @@
         }
         
         .video-container {
-            max-width: 800px;
-            max-height: 400px;
+            max-width: 600px; /* 幅を小さくする */
+            max-height: 300px; /* 高さを小さくする */
             margin: 3rem auto 0;
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 ratio */
+            padding-bottom: 56.25%; /* 16:9の比率は維持 */
             height: 0;
             overflow: hidden;
         }
-        
+
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -285,6 +284,7 @@
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
+
         
         /* Footer */
         footer {
