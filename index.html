@@ -46,6 +46,7 @@
         /* President's message section */
         .president-section {
             max-width: 1200px;
+            margin: 0 auto;
             padding: 5rem 2rem;
             display: flex;
             flex-wrap: wrap;
@@ -56,9 +57,9 @@
         
         .president-photo {
             flex: 1;
-            max-width: 50%; /* 幅を50%に */
+            max-width: 50%;
             text-align: center;
-            /* margin-bottom: 2rem; */
+            padding-right: 1rem;
         }
         
         .president-photo img {
@@ -69,8 +70,8 @@
         
         .president-message {
             flex: 1;
-            max-width: 50%; /* 幅を50%に */
-            padding: 0 2rem;
+            max-width: 50%;
+            padding-left: 1rem;
         }
         
         /* History timeline section */
@@ -84,6 +85,7 @@
             max-width: 1200px;
             margin: 3rem auto;
             position: relative;
+            padding: 0 2rem;
         }
         
         .timeline::after {
@@ -335,7 +337,7 @@
             max-width: 1200px;
             margin: 3rem auto 0;
             position: relative;
-            padding-bottom: 56.25%; /* 16:9の比率は維持 */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
         }
