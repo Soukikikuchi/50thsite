@@ -107,7 +107,7 @@
             text-align: left;
         }
         
-        .timeline-item::after {
+        .timeline-item::after, .timeline-item-red::after, .timeline-item-orange::after {
             content: '';
             position: absolute;
             width: 25px;
@@ -117,28 +117,30 @@
             border-radius: 50%;
             top: 15px;
             z-index: 1;
+            transition: border-color 0.3s ease, transform 0.3s ease;
         }
+        
+        .timeline-item.active::after {
+            border-color: red;
+            transform: scale(1.2);
+        }
+        
         .timeline-item-red::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            background-color: white;
-            border: 4px solid red;
-            border-radius: 50%;
-            top: 15px;
-            z-index: 1;
+            border-color: red;
         }
+        
         .timeline-item-orange::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            background-color: white;
-            border: 4px solid orange;
-            border-radius: 50%;
-            top: 15px;
-            z-index: 1;
+            border-color: orange;
+        }
+        
+        .timeline-item-red.active::after {
+            transform: scale(1.2);
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+        
+        .timeline-item-orange.active::after {
+            transform: scale(1.2);
+            background-color: rgba(255, 165, 0, 0.1);
         }
         
         .left {
@@ -892,6 +894,45 @@
             const presidentSection = document.querySelector('.president-section');
             presidentSection.scrollIntoView({ behavior: 'smooth' });
         });
+
+        // タイムラインのアニメーション
+        const timelineItems = document.querySelectorAll('.timeline-item, .timeline-item-red, .timeline-item-orange');
+        
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            
+            // 要素の中心点が画面の中央付近にあるかをチェック
+            const elementCenter = rect.top + (rect.height / 2);
+            const viewportCenter = windowHeight / 2;
+            
+            return Math.abs(elementCenter - viewportCenter) < windowHeight / 4;
+        }
+        
+        function updateTimelineItems() {
+            timelineItems.forEach(item => {
+                if (isElementInViewport(item)) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+        
+        // スクロールイベントの監視（パフォーマンス最適化のためにスロットリング）
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    updateTimelineItems();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+        
+        // 初期表示時にも実行
+        updateTimelineItems();
     </script>
 </body>
 </html>
