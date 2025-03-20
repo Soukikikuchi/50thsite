@@ -100,7 +100,7 @@
             margin-left: -3px;
         }
         
-        .timeline-item {
+        .timeline-item, .timeline-item-red, .timeline-item-orange{
             padding: 10px 40px;
             position: relative;
             width: 50%;
@@ -114,6 +114,28 @@
             height: 25px;
             background-color: white;
             border: 4px solid #3498db;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        .timeline-item-red::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid red;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        .timeline-item-orange::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid orange;
             border-radius: 50%;
             top: 15px;
             z-index: 1;
@@ -514,7 +536,7 @@
                     <p>東京本社を東京都中央区日本橋本町に移転</p>
                 </div>
             </div>
-            <div class="timeline-item right red">
+            <div class="timeline-item-red right red">
                 <div class="timeline-content">
                     <h3>2001年 10月</h3>
                     <p>ワークフローシステム「Business WorkFlow」をリリース</p>
@@ -526,7 +548,7 @@
                     <p>ネット・インフォメーション株式会社を東京に設立</p>
                 </div>
             </div>
-            <div class="timeline-item right orange">
+            <div class="timeline-item-orange right orange">
                 <div class="timeline-content">
                     <h3>2005年 9月</h3>
                     <p>プライバシーマーク認定を取得</p>
@@ -550,25 +572,25 @@
                     <p>大阪本社を大阪市北区堂島浜に移転</p>
                 </div>
             </div>
-            <div class="timeline-item right oragne">
+            <div class="timeline-item-orange right oragne">
                 <div class="timeline-content">
                     <h3>2015年 12月</h3>
                     <p>情報セキュリティマネジメントシステム（ISMS）〔ISO/IEC 27001〕認証を取得</p>
                 </div>
             </div>
-            <div class="timeline-item left red">
+            <div class="timeline-item-red left red">
                 <div class="timeline-content">
                     <h3>2016年 10月</h3>
                     <p>FAXデータ送信システム「biz BlueSweeper」をリリース</p>
                 </div>
             </div>
-            <div class="timeline-item right orange">
+            <div class="timeline-item-orange right orange">
                 <div class="timeline-content">
                     <h3>2017年 3月</h3>
                     <p>エコアクション21 認証・登録</p>
                 </div>
             </div>
-            <div class="timeline-item left orange">
+            <div class="timeline-item-orange left orange">
                 <div class="timeline-content">
                     <h3>2019年 7月</h3>
                     <p>子育てサポート企業 くるみん認定</p>
@@ -580,25 +602,25 @@
                     <p>東京本社を東京都新宿区市谷本村町に移転</p>
                 </div>
             </div>
-            <div class="timeline-item left red">
+            <div class="timeline-item-red left red">
                 <div class="timeline-content">
                     <h3>2020年 4月</h3>
                     <p>経費精算・申請サービス「STAFee」をリリース</p>
                 </div>
             </div>
-            <div class="timeline-item right red">
+            <div class="timeline-item-red right red">
                 <div class="timeline-content">
                     <h3>2020年 7月</h3>
-                    <p>AI-FAQサービス「KotaMi 」をリリース</p>
+                    <p>AI-FAQサービス「KotaMi」をリリース</p>
                 </div>
             </div>
-            <div class="timeline-item left orange">
+            <div class="timeline-item-orange left orange">
                 <div class="timeline-content">
                     <h3>2022年 3月</h3>
                     <p>健康経営優良法人 2022 認定</p>
                 </div>
             </div>
-            <div class="timeline-item right red">
+            <div class="timeline-item-red right red">
                 <div class="timeline-content">
                     <h3>2023年 4月</h3>
                     <p>オンライン行政サービス「クラファス」をリリース</p>
