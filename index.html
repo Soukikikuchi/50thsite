@@ -164,6 +164,37 @@
             left: -13px;
         }
         
+        .timeline-item .timeline-content, 
+        .timeline-item-red .timeline-content, 
+        .timeline-item-orange .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;  /* 透明なボーダーを追加 */
+        }
+        
+        /* アクティブ状態のスタイル */
+        .timeline-item.active .timeline-content {
+            transform: scale(1.03);  /* サイズを少し大きく */
+            border-color: #3498db;   /* 青色のボーダー */
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.2);  /* 青みがかった影 */
+        }
+        
+        .timeline-item-red.active .timeline-content {
+            transform: scale(1.03);
+            border-color: red;
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.2);
+        }
+        
+        .timeline-item-orange.active .timeline-content {
+            transform: scale(1.03);
+            border-color: orange;
+            box-shadow: 0 8px 20px rgba(255, 165, 0, 0.2);
+        }
+        
         .timeline-content {
             padding: 20px 30px;
             background-color: white;
@@ -920,8 +951,18 @@
             timelineItems.forEach(item => {
                 if (isElementInViewport(item)) {
                     item.classList.add('active');
+                    // タイムラインコンテンツもアクティブにする
+                    const content = item.querySelector('.timeline-content');
+                    if (content) {
+                        content.classList.add('active');
+                    }
                 } else {
                     item.classList.remove('active');
+                    // タイムラインコンテンツも非アクティブにする
+                    const content = item.querySelector('.timeline-content');
+                    if (content) {
+                        content.classList.remove('active');
+                    }
                 }
             });
         }
