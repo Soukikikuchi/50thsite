@@ -882,8 +882,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.querySelector('.products-container');
             const items = document.querySelectorAll('.product-item');
-            const prevBtn = document.querySelector('.prev');
-            const nextBtn = document.querySelector('.next');
+            const prevBtns = document.querySelectorAll('.prev');  // すべてのprevボタンを選択
+            const nextBtns = document.querySelectorAll('.next');  // すべてのnextボタンを選択
             const dots = document.querySelectorAll('.dot');
             
             let currentIndex = 0;
@@ -891,20 +891,24 @@
             // Initialize
             updateCarousel();
             
-            // Previous button click
-            prevBtn.addEventListener('click', function() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateCarousel();
-                }
+            // Previous buttons click
+            prevBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateCarousel();
+                    }
+                });
             });
             
-            // Next button click
-            nextBtn.addEventListener('click', function() {
-                if (currentIndex < items.length - 1) {
-                    currentIndex++;
-                    updateCarousel();
-                }
+            // Next buttons click
+            nextBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (currentIndex < items.length - 1) {
+                        currentIndex++;
+                        updateCarousel();
+                    }
+                });
             });
             
             // Dot click
@@ -920,8 +924,8 @@
                 const slideWidth = container.clientWidth;
                 container.style.transform = `translateX(-${currentIndex * 100}%)`;
                 
-                // Update active dot
-                dots.forEach((dot, index) => {
+                // Update active dots (すべてのドットセットを更新)
+                document.querySelectorAll('.dot').forEach((dot, index) => {
                     if (index === currentIndex) {
                         dot.classList.add('active');
                     } else {
@@ -929,9 +933,13 @@
                     }
                 });
                 
-                // Update button states
-                prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
-                nextBtn.style.opacity = currentIndex === items.length - 1 ? '0.5' : '1';
+                // Update button states (すべてのボタンセットを更新)
+                prevBtns.forEach(btn => {
+                    btn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+                });
+                nextBtns.forEach(btn => {
+                    btn.style.opacity = currentIndex === items.length - 1 ? '0.5' : '1';
+                });
             }
             
             // Handle window resize
