@@ -38,7 +38,7 @@
         
         
         .anniversary-logo {
-            max-width: 80%;
+            /* max-width: 80%; */
             margin-bottom: 2rem;
             animation: fadeIn 2s ease-in-out;
         }
@@ -431,7 +431,7 @@
             margin-bottom: 1rem;
             position: relative;
             display: inline-block;
-            font-size: 2.6rem;/* calcサポート外をフォールバック */
+            font-size: 2.5rem;/* calcサポート外をフォールバック */
             font-size: calc(2.5rem + ((1vw - 0.48rem) * 0.5556));/* viewportが480px以上1200px以下可変 */
             min-height: 0vw;/* Safari用バグフィックス */
         }
@@ -454,6 +454,11 @@
         
         /* Responsive design */
         @media (max-width: 768px) {
+
+            section h2{
+                font-size: 2rem;
+            }
+
             .timeline::after{
                 left: 31px;
             }
@@ -475,6 +480,10 @@
             .right {
                 left: 0;
             }
+        }
+
+        @media (max-width: 650px) {
+
         }
     </style>
 </head>
