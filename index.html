@@ -451,182 +451,27 @@
         }
         
         /* Responsive design */
-        @media (max-width: 1200px) {
-            .president-section, .timeline, .products-carousel {
-                max-width: 95%;
-                padding: 2rem;
-            }
-            
-            .product-item {
-                padding: 2rem;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            /* ヘッダー調整 */
-            header {
-                padding: 2rem;
-            }
-            
-            .anniversary-logo svg {
-                width: 100%;
-                height: auto;
-            }
-            
-            /* 社長メッセージセクション */
-            .president-section {
-                flex-direction: column;
-                padding: 3rem 1rem;
-            }
-            
-            .president-photo {
-                max-width: 80%;
-                padding: 0;
-                margin-bottom: 2rem;
-            }
-            
-            .president-message {
-                max-width: 100%;
-                padding: 0 1rem;
-            }
-            
-            /* 製品紹介セクション */
-            .products-section {
-                padding: 3rem 1rem;
-            }
-            
-            .product-item {
-                padding: 1.5rem;
-            }
-            
-            .product-logo {
-                width: 120px;
-            }
-            
-            .product-item h3 {
-                font-size: 1.5rem;
-            }
-            
-            /* ビデオセクション */
-            .video-container {
-                padding-bottom: 56.25%; /* 16:9のアスペクト比 */
-            }
-            
-            .video-container iframe {
-                width: 90%;
-            }
-        }
-        
         @media (max-width: 768px) {
-            /* ヘッダー */
-            header {
-                height: 80vh;
-            }
-            
-            /* タイムライン */
             .timeline::after {
                 left: 31px;
             }
             
-            .timeline-item, .timeline-item-red, .timeline-item-orange {
+            .timeline-item {
                 width: 100%;
                 padding-left: 70px;
                 padding-right: 25px;
             }
             
-            .timeline-item::after, 
-            .timeline-item-red::after, 
-            .timeline-item-orange::after {
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .left::after, .right::after {
                 left: 18px;
             }
             
             .right {
                 left: 0;
-            }
-            
-            /* 製品紹介 */
-            .carousel-button {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-            
-            .product-item h3 {
-                font-size: 1.3rem;
-            }
-            
-            .product-tagline {
-                font-size: 1rem;
-            }
-            
-            /* セクションタイトル */
-            section h2 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            /* ヘッダー */
-            .anniversary-logo {
-                max-width: 95%;
-            }
-            
-            /* 社長メッセージ */
-            .president-photo {
-                max-width: 95%;
-            }
-            
-            .president-message {
-                padding: 0;
-            }
-            
-            /* 製品紹介 */
-            .product-item {
-                padding: 1rem;
-            }
-            
-            .product-logo {
-                width: 100px;
-                margin-bottom: 1rem;
-            }
-            
-            .carousel-nav {
-                gap: 5px;
-            }
-            
-            .carousel-button {
-                width: 35px;
-                height: 35px;
-            }
-            
-            .carousel-dots {
-                gap: 5px;
-            }
-            
-            .dot {
-                width: 8px;
-                height: 8px;
-            }
-            
-            /* セクションタイトル */
-            section h2 {
-                font-size: 1.8rem;
-            }
-            
-            .section-desc {
-                font-size: 0.9rem;
-                padding: 0 1rem;
-            }
-        }
-        
-        /* タッチデバイス対応 */
-        @media (hover: none) {
-            .carousel-button:hover {
-                background-color: #3498db;
-            }
-            
-            .event-card:hover {
-                transform: none;
             }
         }
     </style>
