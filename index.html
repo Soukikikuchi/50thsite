@@ -428,10 +428,12 @@
         
         /* Common sections styles */
         section h2 {
-            font-size: 2.5rem;
             margin-bottom: 1rem;
             position: relative;
             display: inline-block;
+            font-size: 2.6rem;/* calcサポート外をフォールバック */
+            font-size: calc(2.5rem + ((1vw - 0.48rem) * 0.5556));/* viewportが480px以上1200px以下可変 */
+            min-height: 0vw;/* Safari用バグフィックス */
         }
         
         section h2::after {
@@ -452,17 +454,17 @@
         
         /* Responsive design */
         @media (max-width: 768px) {
-            .timeline::after {
+            .timeline::after{
                 left: 31px;
             }
             
-            .timeline-item {
+            .timeline-item, .timeline-item-red, .timeline-item-orange {
                 width: 100%;
                 padding-left: 70px;
                 padding-right: 25px;
             }
             
-            .timeline-item::after {
+            .timeline-item::after, .timeline-item-red::after, .timeline-item-orange::after{
                 left: 18px;
             }
             
